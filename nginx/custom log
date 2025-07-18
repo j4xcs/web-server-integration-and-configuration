@@ -1,0 +1,26 @@
+## open default configuration file
+
+add this line in http {} block
+        log_format
+        $time_local $host $status 
+        $request_time $upstream_response_time
+        $upstream_connect_time 
+        $upstream_header_time 876 $request_method 
+        $request_uri $server_protocol - 
+        $http_user_agent';
+
+
+
+in vhost conf file add custom_log in the end of access log path
+
+
+example  
+accesslog /var/log/nginx/app1.radianterp.in.acees.log custom_log;
+
+
+## Output
+
+
+122.164.84.86 29/Маy/2025:10:59:47 +0000 appl.radianterp.in 301 0.249 0.248 0.005 0.248 876 GET / HTTP/2.0 - Mozilla/5.0 (Macintosh; Intel Mac 0S X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18
+.5 Safari/605.1.15
+171.79.63.135 29/May/2025:11:00:54 +0000 app1. radianterp.in 301 0.088 0.088 0.002 0.088 876 GET / HTTP/2.0 - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18
